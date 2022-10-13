@@ -5,6 +5,8 @@ const cors = require('cors');
 const path = require('path');
 const assert = require('assert');
 const taskRoute = require('./route/taskRoute')
+const connectdb = require('./db/connect')
+
 // port
 const port = process.env.PORT || Number(5000)
 
@@ -30,5 +32,6 @@ app.all(`*`, (req, res) => {
 
 // server call
 app.listen(port, () => {
+    connectdb()
     console.log(`Server is running @ http://localhost:${port}`);
 })
